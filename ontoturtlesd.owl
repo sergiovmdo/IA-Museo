@@ -1,0 +1,1143 @@
+@prefix : <http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2> .
+
+<http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AutorObra
+:AutorObra rdf:type owl:ObjectProperty ;
+           rdfs:domain :ObraDeArte ;
+           rdfs:range :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#EpocaCuadro
+:EpocaCuadro rdf:type owl:ObjectProperty ;
+             rdfs:domain :ObraDeArte ;
+             rdfs:range :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ObraEnElMuseo
+:ObraEnElMuseo rdf:type owl:ObjectProperty ;
+               rdfs:domain :ObraDeArte ;
+               rdfs:range :Museo .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ObraEnSala
+:ObraEnSala rdf:type owl:ObjectProperty ;
+            rdfs:domain :ObraDeArte ;
+            rdfs:range :Sala .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ObrasRelacionadas
+:ObrasRelacionadas rdf:type owl:ObjectProperty ;
+                   rdfs:domain :ObraDeArte ;
+                   rdfs:range :ObraDeArte ;
+                   rdfs:comment "Obras relacionadas con la actual" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#PreferenciasVisitante
+:PreferenciasVisitante rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Visitante ;
+                       rdfs:range :Preferencias ;
+                       rdfs:comment "Preferencias que tendrá un visitante al visitar el museo" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaDeUnMuseo
+:SalaDeUnMuseo rdf:type owl:ObjectProperty ;
+               rdfs:domain :Museo ;
+               rdfs:range :Sala .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#TematicaCuadro
+:TematicaCuadro rdf:type owl:ObjectProperty ;
+                rdfs:domain :ObraDeArte ;
+                rdfs:range :Tematica .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#anyoDeCreacion
+:anyoDeCreacion rdf:type owl:DatatypeProperty ;
+                rdfs:domain :ObraDeArte ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "Atributo que representa el año de creación de una obra" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#anyoMuerte
+:anyoMuerte rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Pintor ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#anyoNacimiento
+:anyoNacimiento rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Pintor ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#complejidad
+:complejidad rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ObraDeArte ;
+             rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#conocimientoEdadAntigua
+:conocimientoEdadAntigua rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#conocimientoEdadContemporanea
+:conocimientoEdadContemporanea rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf owl:topDataProperty ;
+                               rdfs:domain :ConocimientoArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#conocimientoEdadMedia
+:conocimientoEdadMedia rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain :ConocimientoArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#conocimientoEdadModerna
+:conocimientoEdadModerna rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :ConocimientoArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#conocimientoPrehistoria
+:conocimientoPrehistoria rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :ConocimientoArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#corriente
+:corriente rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :conocimientoEdadModerna ;
+           rdfs:domain :ObraDeArte ,
+                       :Pintor ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#descripcion
+:descripcion rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ObraDeArte ,
+                         :Pintor ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#diasVisita
+:diasVisita rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Preferencias ;
+            rdfs:range xsd:integer ;
+            rdfs:comment "Dias que el visitante pasará en el museo" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#duracionVisita
+:duracionVisita rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Recomendacion ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "Duración de la visita en horas. Se calcula a partir del tiempo durante el cual se mira un cuadro. Este tiempo se calcula en función de la importancia del cuadro, del artista, el conocimiento del visitante, el número de personas del grupo visitante y si tienen preferencias por algún estilo en especial." .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#epoca
+:epoca rdf:type owl:DatatypeProperty ;
+       rdfs:domain :ObraDeArte ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Epoca a la que pertenece la obra" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#esExitoso
+:esExitoso rdf:type owl:DatatypeProperty ;
+           rdfs:domain :ObraDeArte ;
+           rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#escuela
+:escuela rdf:type owl:DatatypeProperty ;
+         rdfs:domain :ObraDeArte ,
+                     :Pintor ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#estilo
+:estilo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :ObraDeArte ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Estilo artístico con el que se identifica la obra." .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#horasPorDia
+:horasPorDia rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Visitante ;
+             rdfs:comment "Seran las horas que un visitante quiere pasar en un museo por dia" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#nacionalidad
+:nacionalidad rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Pintor ,
+                          :Visitante ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#nivelConocimientoArte
+:nivelConocimientoArte rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Visitante ;
+                       rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#nombreAutor
+:nombreAutor rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#periodoPictorico
+:periodoPictorico rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ObraDeArte ,
+                              :Pintor ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaAutor
+:preferenciaAutor rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Preferencias ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaComplejidad
+:preferenciaComplejidad rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Preferencias ;
+                        rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaEpoca
+:preferenciaEpoca rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Preferencias ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaExitoso
+:preferenciaExitoso rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Preferencias ;
+                    rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaNacionalidad
+:preferenciaNacionalidad rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Preferencias ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaTipoDeObra
+:preferenciaTipoDeObra rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Preferencias ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "tipoDeObraPreferido" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#preferenciaTipoObra
+:preferenciaTipoObra rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Preferencias ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Implica la preferencia del visitante respecto al tipo de obra (paisaje, retrato...)" ;
+                     rdfs:label "preferenciaTematicaObra" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#profundidad
+:profundidad rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ObraDeArte ;
+             rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#superficie
+:superficie rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Cuadro ;
+            rdfs:comment "superficie del cuadro en centimetros cuadrados" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#tematica
+:tematica rdf:type owl:DatatypeProperty ;
+          rdfs:domain :ObraDeArte ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#titulo
+:titulo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :ObraDeArte ;
+        rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Accion
+:Accion rdf:type owl:Class ;
+        rdfs:comment "Clase que engloba todas las acciones del sistema" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Antiguedades
+:Antiguedades rdf:type owl:Class ;
+              rdfs:subClassOf :ObraDeArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ArteDecorativo
+:ArteDecorativo rdf:type owl:Class ;
+                rdfs:subClassOf :ObraDeArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ConocimientoArte
+:ConocimientoArte rdf:type owl:Class ;
+                  rdfs:comment "Esta clase contendrá el conocimiento de cada época que tiene el visitante" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Cuadro
+:Cuadro rdf:type owl:Class ;
+        rdfs:subClassOf :ObraDeArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Epoca
+:Epoca rdf:type owl:Class ;
+       rdfs:comment "Clase que representa una época en concreto" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Escultura
+:Escultura rdf:type owl:Class ;
+           rdfs:subClassOf :ObraDeArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Evento
+:Evento rdf:type owl:Class ;
+        rdfs:comment "Clase que engloba todos los eventos que tendrá el sistema" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Museo
+:Museo rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ObraDeArte
+:ObraDeArte rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Pintor
+:Pintor rdf:type owl:Class ;
+        rdfs:label "Autor" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#PinturaDelMes
+:PinturaDelMes rdf:type owl:Class ;
+               rdfs:subClassOf :Sala .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Preferencias
+:Preferencias rdf:type owl:Class ;
+              rdfs:label "Preferencias" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Recomendacion
+:Recomendacion rdf:type owl:Class ;
+               rdfs:comment "Clase que representa las recomendaciones de itinerarios que se envian al visitante" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Respuesta
+:Respuesta rdf:type owl:Class ;
+           rdfs:comment "Clase que engloba todas las respuestas del sistema" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#RestosDeCivilizacion
+:RestosDeCivilizacion rdf:type owl:Class ;
+                      rdfs:subClassOf :ObraDeArte .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Sala
+:Sala rdf:type owl:Class ;
+      rdfs:comment "Concepto que representa una sala dentro de un museo, donde habrán diferentes tipos de obras de arte." .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaArtista
+:SalaArtista rdf:type owl:Class ;
+             rdfs:subClassOf :Sala ;
+             rdfs:comment "Sala dedicada especificamente a un artista" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaCronologica
+:SalaCronologica rdf:type owl:Class ;
+                 rdfs:subClassOf :Sala ;
+                 rdfs:comment "Sala que contendrá obras correspondientes a una época en especifico" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaHighlights
+:SalaHighlights rdf:type owl:Class ;
+                rdfs:subClassOf :Sala ;
+                rdfs:comment "Salas que recogerán las mejores obras" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaHighlightsColeccion
+:SalaHighlightsColeccion rdf:type owl:Class ;
+                         rdfs:subClassOf :SalaHighlights ;
+                         rdfs:comment "Salas que recogerán las mejores obras de una colección" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaHighlightsEpoca
+:SalaHighlightsEpoca rdf:type owl:Class ;
+                     rdfs:subClassOf :SalaHighlights ;
+                     rdfs:comment "Salas que recogerán las mejores obras de una época en conreto." .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaHistorias
+:SalaHistorias rdf:type owl:Class ;
+               rdfs:subClassOf :Sala ;
+               rdfs:comment "Salas en las cuales se expondrán cuadros que cuenten historias respecto a hechos ocurridos o ficticios." .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SalaLlegadasRecientes
+:SalaLlegadasRecientes rdf:type owl:Class ;
+                       rdfs:subClassOf :Sala ;
+                       rdfs:comment "Sala donde se expondrán obras que han llegado recientemente al museo" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Tematica
+:Tematica rdf:type owl:Class ;
+          rdfs:comment "Tematica del cuadro" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Visitante
+:Visitante rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteFamilia
+:VisitanteFamilia rdf:type owl:Class ;
+                  rdfs:subClassOf :Visitante .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteGrupo
+:VisitanteGrupo rdf:type owl:Class ;
+                rdfs:subClassOf :Visitante .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteGrupoGrande
+:VisitanteGrupoGrande rdf:type owl:Class ;
+                      rdfs:subClassOf :VisitanteGrupo .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteIndividual
+:VisitanteIndividual rdf:type owl:Class ;
+                     rdfs:subClassOf :Visitante .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VistanteGrupoPequeño
+:VistanteGrupoPequeño rdf:type owl:Class ;
+                      rdfs:subClassOf :VisitanteGrupo .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AFavorDeLaBrisa
+:AFavorDeLaBrisa rdf:type owl:NamedIndividual ,
+                          :Cuadro ;
+                 :AutorObra :WinslowHomer ;
+                 :titulo "A favor de la brisa" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AleksanderGyermski
+:AleksanderGyermski rdf:type owl:NamedIndividual ,
+                             :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Almiar
+:Almiar rdf:type owl:NamedIndividual ,
+                 :Cuadro ;
+        :AutorObra :ClaudeMonet .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AmorSacroYAmorProfano
+:AmorSacroYAmorProfano rdf:type owl:NamedIndividual ,
+                                :Cuadro ;
+                       :AutorObra :Tiziano ;
+                       :EpocaCuadro :Renacentismo ;
+                       :TematicaCuadro :Religion ;
+                       :anyoDeCreacion 1515 ;
+                       :superficie 32922 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AmtpmopCprradomo
+:AmtpmopCprradomo rdf:type owl:NamedIndividual ,
+                           :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AntonioCanova
+:AntonioCanova rdf:type owl:NamedIndividual ,
+                        :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AugusteRodin
+:AugusteRodin rdf:type owl:NamedIndividual ,
+                       :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Autoretrato
+:Autoretrato rdf:type owl:NamedIndividual ,
+                      :Cuadro ;
+             :AutorObra :WilliamHogarth ;
+             :EpocaCuadro :Rococo ;
+             :TematicaCuadro :Retrato ;
+             :anyoDeCreacion 1745 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#AutoretratoDeVincent
+:AutoretratoDeVincent rdf:type owl:NamedIndividual ,
+                               :Cuadro ;
+                      :AutorObra :VincentVanGogh .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Barroco
+:Barroco rdf:type owl:NamedIndividual ,
+                  :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#BernardinoCampiPintandoASofiaAnguissola
+:BernardinoCampiPintandoASofiaAnguissola rdf:type owl:NamedIndividual ,
+                                                  :Cuadro ;
+                                         :AutorObra :SofiaAnguissola ;
+                                         :EpocaCuadro :Manierismo ;
+                                         :TematicaCuadro :Retrato ;
+                                         :anyoDeCreacion 1559 ;
+                                         :superficie 7000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#CaballeroSonriente
+:CaballeroSonriente rdf:type owl:NamedIndividual ,
+                             :Cuadro ;
+                    :AutorObra :FransHals ;
+                    :EpocaCuadro :Barroco ;
+                    :TematicaCuadro :Retrato ;
+                    :anyoDeCreacion 1624 ;
+                    :superficie 5561 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#CamileCorot
+:CamileCorot rdf:type owl:NamedIndividual ,
+                      :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Canaletto
+:Canaletto rdf:type owl:NamedIndividual ,
+                    :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Caravaggio
+:Caravaggio rdf:type owl:NamedIndividual ,
+                     :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#CestoConFrutas
+:CestoConFrutas rdf:type owl:NamedIndividual ,
+                         :Cuadro ;
+                :AutorObra :Caravaggio ;
+                :EpocaCuadro :Barroco ;
+                :TematicaCuadro :NaturalezaMuerta ;
+                :anyoDeCreacion 1596 ;
+                :superficie 2300 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ClaudeMonet
+:ClaudeMonet rdf:type owl:NamedIndividual ,
+                      :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#DiegoVelazquez
+:DiegoVelazquez rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#EdwardHopper
+:EdwardHopper rdf:type owl:NamedIndividual ,
+                       :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElAmorVictorioso
+:ElAmorVictorioso rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :Caravaggio ;
+                  :EpocaCuadro :Barroco ;
+                  :TematicaCuadro :NaturalezaMuerta ;
+                  :anyoDeCreacion 1601 ;
+                  :superficie 17628 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElAquelarre
+:ElAquelarre rdf:type owl:NamedIndividual ,
+                      :Cuadro ;
+             :AutorObra :FranciscoDeGoya .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElCaballeroDeLaMano
+:ElCaballeroDeLaMano rdf:type owl:NamedIndividual ,
+                              :Cuadro ;
+                     :AutorObra :ElGreco ;
+                     :EpocaCuadro :Manierismo ;
+                     :TematicaCuadro :Retrato ;
+                     :anyoDeCreacion 1580 ;
+                     :superficie 5412 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElColumpio
+:ElColumpio rdf:type owl:NamedIndividual ,
+                     :Cuadro ;
+            :AutorObra :JeanHonoreFragonard ;
+            :EpocaCuadro :Rococo ;
+            :TematicaCuadro :Religion ;
+            :anyoDeCreacion 1767 ;
+            :superficie 5265 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElDesesperado
+:ElDesesperado rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :GustaveCourbet .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElGreco
+:ElGreco rdf:type owl:NamedIndividual ,
+                  :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElJardinDelArtistaEnGiverny
+:ElJardinDelArtistaEnGiverny rdf:type owl:NamedIndividual ,
+                                      :Cuadro ;
+                             :AutorObra :ClaudeMonet .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElJovenAzul
+:ElJovenAzul rdf:type owl:NamedIndividual ,
+                      :Cuadro ;
+             :AutorObra :ThomasGainsborough ;
+             :EpocaCuadro :Rococo ;
+             :TematicaCuadro :Retrato ;
+             :anyoDeCreacion 1770 ;
+             :superficie 19360 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElNacimientoDeVenus
+:ElNacimientoDeVenus rdf:type owl:NamedIndividual ,
+                              :Cuadro ;
+                     :AutorObra :SandroBoticelli ;
+                     :EpocaCuadro :Renacentismo ;
+                     :TematicaCuadro :Religion ;
+                     :anyoDeCreacion 1485 ;
+                     :superficie 47816 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElNiñoDeLaPeonza
+:ElNiñoDeLaPeonza rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :JeanSimeon ;
+                  :EpocaCuadro :Rococo ;
+                  :TematicaCuadro :Retrato ;
+                  :anyoDeCreacion 1735 ;
+                  :superficie 5092 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ElRaptoDeLasSabinas
+:ElRaptoDeLasSabinas rdf:type owl:NamedIndividual ,
+                              :Cuadro ;
+                     :AutorObra :JacquesLousDavid ;
+                     :EpocaCuadro :Neoclacisismo ;
+                     :TematicaCuadro :Historica ;
+                     :anyoDeCreacion 1797 ;
+                     :superficie 11000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#EugeneDelacroix
+:EugeneDelacroix rdf:type owl:NamedIndividual ,
+                          :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#FranciscoDeGoya
+:FranciscoDeGoya rdf:type owl:NamedIndividual ,
+                          :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#FranciscoGuitierrez
+:FranciscoGuitierrez rdf:type owl:NamedIndividual ,
+                              :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#FransHals
+:FransHals rdf:type owl:NamedIndividual ,
+                    :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#GeogrgesPierre
+:GeogrgesPierre rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Gioconda
+:Gioconda rdf:type owl:NamedIndividual ,
+                   :Cuadro ;
+          :AutorObra :LeonardoDaVinci ;
+          :EpocaCuadro :Renacentismo ;
+          :TematicaCuadro :Retrato ;
+          :anyoDeCreacion 1503 ;
+          :superficie 4081 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#GustaveCourbet
+:GustaveCourbet rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#HabitacionesJuntoAlMar
+:HabitacionesJuntoAlMar rdf:type owl:NamedIndividual ,
+                                 :Cuadro ;
+                        :AutorObra :EdwardHopper ;
+                        :EpocaCuadro :Neoclacisismo ;
+                        :TematicaCuadro :Paisaje ;
+                        :anyoDeCreacion 1951 ;
+                        :superficie 7446 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#HansHolbein
+:HansHolbein rdf:type owl:NamedIndividual ,
+                      :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Historica
+:Historica rdf:type owl:NamedIndividual ,
+                    :Tematica .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#HombreDeVitruvio
+:HombreDeVitruvio rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :LeonardoDaVinci ;
+                  :EpocaCuadro :Renacentismo ;
+                  :TematicaCuadro :Historica ;
+                  :anyoDeCreacion 1492 ;
+                  :superficie 910 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#IliaRepin
+:IliaRepin rdf:type owl:NamedIndividual ,
+                    :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Impresionismo
+:Impresionismo rdf:type owl:NamedIndividual ,
+                        :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JacquesLousDavid
+:JacquesLousDavid rdf:type owl:NamedIndividual ,
+                           :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JarronConClaveles
+:JarronConClaveles rdf:type owl:NamedIndividual ,
+                            :Cuadro ;
+                   :AutorObra :VincentVanGogh .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JeanHonoreFragonard
+:JeanHonoreFragonard rdf:type owl:NamedIndividual ,
+                              :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JeanSimeon
+:JeanSimeon rdf:type owl:NamedIndividual ,
+                     :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JoanDeBolonia
+:JoanDeBolonia rdf:type owl:NamedIndividual ,
+                        :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JohnWilliam
+:JohnWilliam rdf:type owl:NamedIndividual ,
+                      :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#JuegosDeNiños
+:JuegosDeNiños rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :PieterBrueghel ;
+               :EpocaCuadro :Renacentismo ;
+               :TematicaCuadro :Historica ;
+               :anyoDeCreacion 1560 ;
+               :superficie 18998 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaCerradura
+:LaCerradura rdf:type owl:NamedIndividual ,
+                      :Cuadro ;
+             :AutorObra :JeanHonoreFragonard ;
+             :EpocaCuadro :Rococo ;
+             :TematicaCuadro :Historica ;
+             :anyoDeCreacion 1778 ;
+             :superficie 6532 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaFamiliaDeCarlosIV
+:LaFamiliaDeCarlosIV rdf:type owl:NamedIndividual ,
+                              :Cuadro ;
+                     :AutorObra :FranciscoDeGoya .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaLibertadGuiandoAlPueblo
+:LaLibertadGuiandoAlPueblo rdf:type owl:NamedIndividual ,
+                                    :Cuadro ;
+                           :AutorObra :EugeneDelacroix .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaMajaDesnuda
+:LaMajaDesnuda rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :FranciscoDeGoya .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaMajaVestida
+:LaMajaVestida rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :FranciscoDeGoya .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaMatanzaDeQuios
+:LaMatanzaDeQuios rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :EugeneDelacroix .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaMuerteDeMarat
+:LaMuerteDeMarat rdf:type owl:NamedIndividual ,
+                          :Cuadro ;
+                 :AutorObra :JacquesLousDavid ;
+                 :EpocaCuadro :Neoclacisismo ;
+                 :TematicaCuadro :Historica ;
+                 :anyoDeCreacion 1793 ;
+                 :superficie 21120 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaNocheEstrellada
+:LaNocheEstrellada rdf:type owl:NamedIndividual ,
+                            :Cuadro ;
+                   :AutorObra :VincentVanGogh .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaPastora
+:LaPastora rdf:type owl:NamedIndividual ,
+                    :Cuadro ;
+           :AutorObra :WilliamAdolphe .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaRondaDeNoche
+:LaRondaDeNoche rdf:type owl:NamedIndividual ,
+                         :Cuadro ;
+                :AutorObra :Rembrandt ;
+                :EpocaCuadro :Barroco ;
+                :TematicaCuadro :Historica ;
+                :anyoDeCreacion 1641 ;
+                :superficie 158631 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaTrinidad
+:LaTrinidad rdf:type owl:NamedIndividual ,
+                     :Cuadro ;
+            :AutorObra :ElGreco ;
+            :EpocaCuadro :Manierismo ;
+            :TematicaCuadro :Religion ;
+            :anyoDeCreacion 1578 ;
+            :superficie 53700 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaUltimaCena
+:LaUltimaCena rdf:type owl:NamedIndividual ,
+                       :Cuadro ;
+              :AutorObra :LeonardoDaVinci ;
+              :EpocaCuadro :Renacentismo ;
+              :TematicaCuadro :Religion ;
+              :anyoDeCreacion 1496 ;
+              :superficie 40480000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LasMeninas
+:LasMeninas rdf:type owl:NamedIndividual ,
+                     :Cuadro ;
+            :AutorObra :DiegoVelazquez ;
+            :EpocaCuadro :Barroco ;
+            :TematicaCuadro :Historica ;
+            :anyoDeCreacion 1656 ;
+            :superficie 9000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LaviniaFontana
+:LaviniaFontana rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LeonardoDaVinci
+:LeonardoDaVinci rdf:type owl:NamedIndividual ,
+                          :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Lirios
+:Lirios rdf:type owl:NamedIndividual ,
+                 :Cuadro ;
+        :AutorObra :VincentVanGogh .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LosComedoresDePatatas
+:LosComedoresDePatatas rdf:type owl:NamedIndividual ,
+                                :Cuadro ;
+                       :AutorObra :VincentVanGogh .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LosDiscipulosDeEmaus
+:LosDiscipulosDeEmaus rdf:type owl:NamedIndividual ,
+                               :Cuadro ;
+                      :AutorObra :Caravaggio ;
+                      :EpocaCuadro :Barroco ;
+                      :TematicaCuadro :Historica ;
+                      :anyoDeCreacion 1602 ;
+                      :superficie 27580 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#LosSirgadoresDeVolga
+:LosSirgadoresDeVolga rdf:type owl:NamedIndividual ,
+                               :Cuadro ;
+                      :AutorObra :IliaRepin .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Lycianna
+:Lycianna rdf:type owl:NamedIndividual ,
+                   :Cuadro ;
+          :AutorObra :JohnWilliam ;
+          :EpocaCuadro :Neoclacisismo ;
+          :TematicaCuadro :Retrato ;
+          :anyoDeCreacion 1918 ;
+          :superficie 5000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Manierismo
+:Manierismo rdf:type owl:NamedIndividual ,
+                     :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#MigueAngel
+:MigueAngel rdf:type owl:NamedIndividual ,
+                     :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#MujerJudiaVendiendoNaranjas
+:MujerJudiaVendiendoNaranjas rdf:type owl:NamedIndividual ,
+                                      :Cuadro ;
+                             :AutorObra :AleksanderGyermski .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#NaturalezaMuerta
+:NaturalezaMuerta rdf:type owl:NamedIndividual ,
+                           :Tematica .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Neoclacisismo
+:Neoclacisismo rdf:type owl:NamedIndividual ,
+                        :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Paisaje
+:Paisaje rdf:type owl:NamedIndividual ,
+                  :Tematica .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Parmigianino
+:Parmigianino rdf:type owl:NamedIndividual ,
+                       :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#PieterBrueghel
+:PieterBrueghel rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#PlazaDeSanMarcos
+:PlazaDeSanMarcos rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :Canaletto ;
+                  :EpocaCuadro :Rococo ;
+                  :TematicaCuadro :Paisaje ;
+                  :anyoDeCreacion 1723 ;
+                  :superficie 25000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#PuenteDeNarni
+:PuenteDeNarni rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :CamileCorot .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#RailroadSunset
+:RailroadSunset rdf:type owl:NamedIndividual ,
+                         :Cuadro ;
+                :AutorObra :EdwardHopper ;
+                :EpocaCuadro :Neoclacisismo ;
+                :TematicaCuadro :Paisaje ;
+                :anyoDeCreacion 1929 ;
+                :superficie 6500 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Realismo
+:Realismo rdf:type owl:NamedIndividual ,
+                   :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Religion
+:Religion rdf:type owl:NamedIndividual ,
+                   :Tematica .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Rembrandt
+:Rembrandt rdf:type owl:NamedIndividual ,
+                    :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Renacentismo
+:Renacentismo rdf:type owl:NamedIndividual ,
+                       :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Retrato
+:Retrato rdf:type owl:NamedIndividual ,
+                  :Tematica .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#RetratoDeJaneSeymour
+:RetratoDeJaneSeymour rdf:type owl:NamedIndividual ,
+                               :Cuadro ;
+                      :AutorObra :HansHolbein ;
+                      :EpocaCuadro :Renacentismo ;
+                      :TematicaCuadro :Retrato ;
+                      :anyoDeCreacion 1536 ;
+                      :superficie 7500 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#RetratoDeUnaMujerNoble
+:RetratoDeUnaMujerNoble rdf:type owl:NamedIndividual ,
+                                 :Cuadro ;
+                        :AutorObra :LaviniaFontana ;
+                        :EpocaCuadro :Manierismo ;
+                        :TematicaCuadro :Retrato ;
+                        :anyoDeCreacion 1580 ;
+                        :superficie 5412 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Rococo
+:Rococo rdf:type owl:NamedIndividual ,
+                 :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Romanticismo
+:Romanticismo rdf:type owl:NamedIndividual ,
+                       :Epoca .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SandroBoticelli
+:SandroBoticelli rdf:type owl:NamedIndividual ,
+                          :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#SofiaAnguissola
+:SofiaAnguissola rdf:type owl:NamedIndividual ,
+                          :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#ThomasGainsborough
+:ThomasGainsborough rdf:type owl:NamedIndividual ,
+                             :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#Tiziano
+:Tiziano rdf:type owl:NamedIndividual ,
+                  :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#UnBañoDeAsnieres
+:UnBañoDeAsnieres rdf:type owl:NamedIndividual ,
+                           :Cuadro ;
+                  :AutorObra :GeogrgesPierre .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VIsionOfSantJerome
+:VIsionOfSantJerome rdf:type owl:NamedIndividual ,
+                             :Cuadro ;
+                    :AutorObra :Parmigianino ;
+                    :EpocaCuadro :Manierismo ;
+                    :TematicaCuadro :Religion ;
+                    :anyoDeCreacion 1526 ;
+                    :superficie 6000 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VenusDelEspejo
+:VenusDelEspejo rdf:type owl:NamedIndividual ,
+                         :Cuadro ;
+                :AutorObra :Tiziano ;
+                :EpocaCuadro :Manierismo ;
+                :TematicaCuadro :Religion ;
+                :anyoMuerte 1555 ;
+                :superficie 12896 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VenusDelEspejoVelazquez
+:VenusDelEspejoVelazquez rdf:type owl:NamedIndividual ,
+                                  :Cuadro ;
+                         :AutorObra :DiegoVelazquez ;
+                         :EpocaCuadro :Barroco ;
+                         :TematicaCuadro :Religion ;
+                         :anyoDeCreacion 1647 ;
+                         :superficie 21594 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VincentVanGogh
+:VincentVanGogh rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VistaDeToledo
+:VistaDeToledo rdf:type owl:NamedIndividual ,
+                        :Cuadro ;
+               :AutorObra :ElGreco ;
+               :EpocaCuadro :Manierismo ;
+               :TematicaCuadro :Paisaje ;
+               :anyoDeCreacion 1598 ;
+               :superficie 2064 .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#WilliamAdolphe
+:WilliamAdolphe rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#WilliamHogarth
+:WilliamHogarth rdf:type owl:NamedIndividual ,
+                         :Pintor .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#WinslowHomer
+:WinslowHomer rdf:type owl:NamedIndividual ,
+                       :Pintor ;
+              :nombreAutor "Winslow Homer" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
