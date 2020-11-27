@@ -161,6 +161,12 @@
            rdfs:range xsd:boolean .
 
 
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#esFamilia
+:esFamilia rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Visitante ;
+           rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#escuela
 :escuela rdf:type owl:DatatypeProperty ;
          rdfs:domain :ObraDeArte ,
@@ -263,6 +269,12 @@
             rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:domain :Cuadro ;
             rdfs:comment "superficie del cuadro en centimetros cuadrados" .
+
+
+###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#tamanyoGrupo
+:tamanyoGrupo rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Visitante ;
+              rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#tematica
@@ -415,29 +427,12 @@
 :Visitante rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteFamilia
-:VisitanteFamilia rdf:type owl:Class ;
-                  rdfs:subClassOf :Visitante .
-
-
-###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteGrupo
-:VisitanteGrupo rdf:type owl:Class ;
-                rdfs:subClassOf :Visitante .
-
-
 ###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteGrupoGrande
-:VisitanteGrupoGrande rdf:type owl:Class ;
-                      rdfs:subClassOf :VisitanteGrupo .
-
-
-###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VisitanteIndividual
-:VisitanteIndividual rdf:type owl:Class ;
-                     rdfs:subClassOf :Visitante .
+:VisitanteGrupoGrande rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/sergi/ontologies/2020/10/untitled-ontology-2#VistanteGrupoPequeño
-:VistanteGrupoPequeño rdf:type owl:Class ;
-                      rdfs:subClassOf :VisitanteGrupo .
+:VistanteGrupoPequeño rdf:type owl:Class .
 
 
 #################################################################

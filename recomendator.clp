@@ -1,3 +1,101 @@
+(defclass ObraDeArte
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    ;;; Atributo que representa el año de creación de una obra
+    (multislot anyoDeCreacion
+        (type INTEGER)
+        (create-accessor read-write))
+    (multislot corriente
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Epoca a la que pertenece la obra
+    (multislot epoca
+        (type STRING)
+        (create-accessor read-write))
+    (multislot TematicaCuadro
+        (type INSTANCE)
+        (create-accessor read-write))
+    ;;; Obras relacionadas con la actual
+    (multislot ObrasRelacionadas
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot periodoPictorico
+        (type STRING)
+        (create-accessor read-write))
+    (multislot ObraEnSala
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot complejidad
+        (type FLOAT)
+        (create-accessor read-write))
+    (multislot esExitoso
+        (type SYMBOL)
+        (create-accessor read-write))
+    (multislot ObraEnElMuseo
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot titulo
+        (type STRING)
+        (create-accessor read-write))
+    (multislot AutorObra
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot EpocaCuadro
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot escuela
+        (type STRING)
+        (create-accessor read-write))
+    (multislot profundidad
+        (type FLOAT)
+        (create-accessor read-write))
+    ;;; Estilo artístico con el que se identifica la obra.
+    (multislot estilo
+        (type STRING)
+        (create-accessor read-write))
+    (multislot tematica
+        (type STRING)
+        (create-accessor read-write))
+    (multislot descripcion
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Antiguedades
+    (is-a ObraDeArte)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass ArteDecorativo
+    (is-a ObraDeArte)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Cuadro
+    (is-a ObraDeArte)
+    (role concrete)
+    (pattern-match reactive)
+    ;;; superficie del cuadro en centimetros cuadrados
+    (multislot superficie
+        (type SYMBOL)
+        (create-accessor read-write))
+)
+
+(defclass Escultura
+    (is-a ObraDeArte)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass RestosDeCivilizacion
+    (is-a ObraDeArte)
+    (role concrete)
+    (pattern-match reactive)
+)
+
 (defclass Sala "Concepto que representa una sala dentro de un museo, donde habrán diferentes tipos de obras de arte."
     (is-a USER)
     (role concrete)
@@ -52,102 +150,51 @@
     (pattern-match reactive)
 )
 
-(defclass ObraDeArte
+(defclass Respuesta "Clase que engloba todas las respuestas del sistema"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot periodoPictorico
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Obras relacionadas con la actual
-    (multislot ObrasRelacionadas
-        (type INSTANCE)
-        (create-accessor read-write))
-    ;;; Epoca a la que pertenece la obra
-    (multislot epoca
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Atributo que representa el año de creación de una obra
-    (multislot anyoDeCreacion
+)
+
+(defclass Preferencias
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot preferenciaComplejidad
         (type INTEGER)
         (create-accessor read-write))
-    (multislot tematica
+    ;;; Implica la preferencia del visitante respecto al tipo de obra (paisaje, retrato...)
+    (multislot preferenciaTipoObra
         (type STRING)
         (create-accessor read-write))
-    (multislot esExitoso
+    (multislot preferenciaTipoDeObra
+        (type STRING)
+        (create-accessor read-write))
+    (multislot preferenciaEpoca
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Dias que el visitante pasará en el museo
+    (multislot diasVisita
+        (type INTEGER)
+        (create-accessor read-write))
+    (multislot preferenciaAutor
+        (type STRING)
+        (create-accessor read-write))
+    (multislot preferenciaExitoso
         (type SYMBOL)
         (create-accessor read-write))
-    (multislot ObraEnElMuseo
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot profundidad
-        (type FLOAT)
-        (create-accessor read-write))
-    (multislot ObraEnSala
-        (type INSTANCE)
-        (create-accessor read-write))
-    ;;; Estilo artístico con el que se identifica la obra.
-    (multislot estilo
-        (type STRING)
-        (create-accessor read-write))
-    (multislot AutorObra
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot complejidad
-        (type FLOAT)
-        (create-accessor read-write))
-    (multislot titulo
-        (type STRING)
-        (create-accessor read-write))
-    (multislot TematicaCuadro
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot escuela
-        (type STRING)
-        (create-accessor read-write))
-    (multislot EpocaCuadro
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot corriente
-        (type STRING)
-        (create-accessor read-write))
-    (multislot descripcion
+    (multislot preferenciaNacionalidad
         (type STRING)
         (create-accessor read-write))
 )
 
-(defclass Antiguedades
-    (is-a ObraDeArte)
+(defclass Museo
+    (is-a USER)
     (role concrete)
     (pattern-match reactive)
-)
-
-(defclass ArteDecorativo
-    (is-a ObraDeArte)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Cuadro
-    (is-a ObraDeArte)
-    (role concrete)
-    (pattern-match reactive)
-    ;;; superficie del cuadro en centimetros cuadrados
-    (multislot superficie
-        (type SYMBOL)
+    (multislot SalaDeUnMuseo
+        (type INSTANCE)
         (create-accessor read-write))
-)
-
-(defclass Escultura
-    (is-a ObraDeArte)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass RestosDeCivilizacion
-    (is-a ObraDeArte)
-    (role concrete)
-    (pattern-match reactive)
 )
 
 (defclass Visitante
@@ -155,47 +202,71 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Seran las horas que un visitante quiere pasar en un museo por dia
-    (multislot horasPorDia
-        (type SYMBOL)
+    (single-slot horasPorDia
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot esFamilia
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Preferencias que tendrá un visitante al visitar el museo
+    (single-slot PreferenciasVisitante
+        (type INSTANCE)
+        (create-accessor read-write))
+    (single-slot tamanyoGrupo
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot nacionalidad
+        (type STRING)
+        (create-accessor read-write))
+    (single-slot nivelConocimientoArte
+        (type INTEGER)
+        (create-accessor read-write))
+)
+
+(defclass VisitanteGrupoGrande
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Tematica "Tematica del cuadro"
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Pintor
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot descripcion
+        (type STRING)
+        (create-accessor read-write))
+    (multislot corriente
+        (type STRING)
+        (create-accessor read-write))
+    (multislot anyoNacimiento
+        (type INTEGER)
+        (create-accessor read-write))
+    (multislot periodoPictorico
+        (type STRING)
         (create-accessor read-write))
     (multislot nacionalidad
         (type STRING)
         (create-accessor read-write))
-    (multislot nivelConocimientoArte
-        (type INTEGER)
+    (multislot anyoMuerte
+        (type SYMBOL)
         (create-accessor read-write))
-    ;;; Preferencias que tendrá un visitante al visitar el museo
-    (multislot PreferenciasVisitante
-        (type INSTANCE)
+    (multislot nombreAutor
+        (type SYMBOL)
+        (create-accessor read-write))
+    (multislot escuela
+        (type STRING)
         (create-accessor read-write))
 )
 
-(defclass VisitanteFamilia
-    (is-a Visitante)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass VisitanteGrupo
-    (is-a Visitante)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass VisitanteGrupoGrande
-    (is-a VisitanteGrupo)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass VistanteGrupoPequeño
-    (is-a VisitanteGrupo)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass VisitanteIndividual
-    (is-a Visitante)
+(defclass Accion "Clase que engloba todas las acciones del sistema"
+    (is-a USER)
     (role concrete)
     (pattern-match reactive)
 )
@@ -210,96 +281,19 @@
         (create-accessor read-write))
 )
 
-(defclass Preferencias
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot preferenciaExitoso
-        (type SYMBOL)
-        (create-accessor read-write))
-    (multislot preferenciaEpoca
-        (type STRING)
-        (create-accessor read-write))
-    (multislot preferenciaAutor
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Implica la preferencia del visitante respecto al tipo de obra (paisaje, retrato...)
-    (multislot preferenciaTipoObra
-        (type STRING)
-        (create-accessor read-write))
-    (multislot preferenciaComplejidad
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot preferenciaNacionalidad
-        (type STRING)
-        (create-accessor read-write))
-    (multislot preferenciaTipoDeObra
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Dias que el visitante pasará en el museo
-    (multislot diasVisita
-        (type INTEGER)
-        (create-accessor read-write))
-)
-
-(defclass Accion "Clase que engloba todas las acciones del sistema"
+(defclass Epoca "Clase que representa una época en concreto"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
 )
 
-(defclass Museo
+(defclass VistanteGrupoPequeño
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot SalaDeUnMuseo
-        (type INSTANCE)
-        (create-accessor read-write))
 )
 
 (defclass Evento "Clase que engloba todos los eventos que tendrá el sistema"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Pintor
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot anyoMuerte
-        (type SYMBOL)
-        (create-accessor read-write))
-    (multislot corriente
-        (type STRING)
-        (create-accessor read-write))
-    (multislot nacionalidad
-        (type STRING)
-        (create-accessor read-write))
-    (multislot anyoNacimiento
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot periodoPictorico
-        (type STRING)
-        (create-accessor read-write))
-    (multislot nombreAutor
-        (type SYMBOL)
-        (create-accessor read-write))
-    (multislot escuela
-        (type STRING)
-        (create-accessor read-write))
-    (multislot descripcion
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Tematica "Tematica del cuadro"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Respuesta "Clase que engloba todas las respuestas del sistema"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
@@ -309,13 +303,13 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot conocimientoEdadContemporanea
-        (type SYMBOL)
-        (create-accessor read-write))
     (multislot conocimientoEdadMedia
         (type SYMBOL)
         (create-accessor read-write))
     (multislot conocimientoPrehistoria
+        (type SYMBOL)
+        (create-accessor read-write))
+    (multislot conocimientoEdadContemporanea
         (type SYMBOL)
         (create-accessor read-write))
     (multislot conocimientoEdadModerna
@@ -323,503 +317,498 @@
         (create-accessor read-write))
 )
 
-(defclass Epoca "Clase que representa una época en concreto"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
 (definstances instances
-    ([VenusDelEspejoVelazquez] of Cuadro
-         (superficie  21594)
-         (anyoDeCreacion  1647)
-         (AutorObra  [DiegoVelazquez])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([CaballeroSonriente] of Cuadro
-         (superficie  5561)
-         (anyoDeCreacion  1624)
-         (AutorObra  [FransHals])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([RetratoDeUnaMujerNoble] of Cuadro
-         (superficie  5412)
-         (anyoDeCreacion  1580)
-         (AutorObra  [LaviniaFontana])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Manierismo])
-    )
-
-    ([PuenteDeNarni] of Cuadro
-         (AutorObra  [CamileCorot])
-    )
-
-    ([ElDesesperado] of Cuadro
-         (AutorObra  [GustaveCourbet])
-    )
-
-    ([Lycianna] of Cuadro
-         (superficie  5000)
-         (anyoDeCreacion  1918)
-         (AutorObra  [JohnWilliam])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Neoclacisismo])
-    )
-
-    ([LaviniaFontana] of Pintor
-    )
-
-    ([LaMatanzaDeQuios] of Cuadro
-         (AutorObra  [EugeneDelacroix])
-    )
-
-    ([AmtpmopCprradomo] of Pintor
-    )
-
-    ([JohnWilliam] of Pintor
-    )
-
-    ([Almiar] of Cuadro
-         (AutorObra  [ClaudeMonet])
-    )
-
-    ([WinslowHomer] of Pintor
-         (nombreAutor  "Winslow Homer")
-    )
-
-    ([LaRondaDeNoche] of Cuadro
-         (superficie  158631)
-         (anyoDeCreacion  1641)
-         (AutorObra  [Rembrandt])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([LaUltimaCena] of Cuadro
-         (superficie  40480000)
-         (anyoDeCreacion  1496)
-         (AutorObra  [LeonardoDaVinci])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([LosComedoresDePatatas] of Cuadro
-         (AutorObra  [VincentVanGogh])
-    )
-
-    ([ElJovenAzul] of Cuadro
-         (superficie  19360)
-         (anyoDeCreacion  1770)
-         (AutorObra  [ThomasGainsborough])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([CamileCorot] of Pintor
-    )
-
-    ([Tiziano] of Pintor
-    )
-
-    ([ThomasGainsborough] of Pintor
-    )
-
-    ([LaLibertadGuiandoAlPueblo] of Cuadro
-         (AutorObra  [EugeneDelacroix])
-    )
-
-    ([Neoclacisismo] of Epoca
-    )
-
-    ([ElAmorVictorioso] of Cuadro
-         (superficie  17628)
-         (anyoDeCreacion  1601)
-         (AutorObra  [Caravaggio])
-         (TematicaCuadro  [NaturalezaMuerta])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([NaturalezaMuerta] of Tematica
-    )
-
-    ([MigueAngel] of Pintor
-    )
-
-    ([PlazaDeSanMarcos] of Cuadro
-         (superficie  25000)
-         (anyoDeCreacion  1723)
-         (AutorObra  [Canaletto])
-         (TematicaCuadro  [Paisaje])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([ElNiñoDeLaPeonza] of Cuadro
-         (superficie  5092)
-         (anyoDeCreacion  1735)
-         (AutorObra  [JeanSimeon])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([JeanSimeon] of Pintor
-    )
-
-    ([JacquesLousDavid] of Pintor
-    )
-
-    ([Parmigianino] of Pintor
-    )
-
-    ([LaMajaDesnuda] of Cuadro
-         (AutorObra  [FranciscoDeGoya])
-    )
-
-    ([LaFamiliaDeCarlosIV] of Cuadro
-         (AutorObra  [FranciscoDeGoya])
-    )
-
-    ([RailroadSunset] of Cuadro
-         (superficie  6500)
-         (anyoDeCreacion  1929)
-         (AutorObra  [EdwardHopper])
-         (TematicaCuadro  [Paisaje])
-         (EpocaCuadro  [Neoclacisismo])
-    )
-
-    ([HombreDeVitruvio] of Cuadro
-         (superficie  910)
-         (anyoDeCreacion  1492)
-         (AutorObra  [LeonardoDaVinci])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([IliaRepin] of Pintor
-    )
-
-    ([WilliamHogarth] of Pintor
-    )
-
-    ([ElGreco] of Pintor
-    )
-
-    ([ElColumpio] of Cuadro
-         (superficie  5265)
-         (anyoDeCreacion  1767)
-         (AutorObra  [JeanHonoreFragonard])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([LaPastora] of Cuadro
-         (AutorObra  [WilliamAdolphe])
-    )
-
-    ([RetratoDeJaneSeymour] of Cuadro
-         (superficie  7500)
-         (anyoDeCreacion  1536)
-         (AutorObra  [HansHolbein])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([Renacentismo] of Epoca
-    )
-
-    ([LosSirgadoresDeVolga] of Cuadro
-         (AutorObra  [IliaRepin])
-    )
-
-    ([Retrato] of Tematica
+    ([Romanticismo] of Epoca
     )
 
     ([ElRaptoDeLasSabinas] of Cuadro
          (superficie  11000)
          (anyoDeCreacion  1797)
-         (AutorObra  [JacquesLousDavid])
          (TematicaCuadro  [Historica])
+         (AutorObra  [JacquesLousDavid])
          (EpocaCuadro  [Neoclacisismo])
     )
 
-    ([Canaletto] of Pintor
-    )
-
-    ([DiegoVelazquez] of Pintor
-    )
-
-    ([VIsionOfSantJerome] of Cuadro
-         (superficie  6000)
-         (anyoDeCreacion  1526)
-         (AutorObra  [Parmigianino])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Manierismo])
-    )
-
-    ([Paisaje] of Tematica
-    )
-
-    ([Caravaggio] of Pintor
-    )
-
-    ([MujerJudiaVendiendoNaranjas] of Cuadro
-         (AutorObra  [AleksanderGyermski])
-    )
-
-    ([PieterBrueghel] of Pintor
-    )
-
-    ([HabitacionesJuntoAlMar] of Cuadro
-         (superficie  7446)
-         (anyoDeCreacion  1951)
-         (AutorObra  [EdwardHopper])
-         (TematicaCuadro  [Paisaje])
-         (EpocaCuadro  [Neoclacisismo])
-    )
-
-    ([AmorSacroYAmorProfano] of Cuadro
-         (superficie  32922)
-         (anyoDeCreacion  1515)
-         (AutorObra  [Tiziano])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([JeanHonoreFragonard] of Pintor
+    ([JohnWilliam] of Pintor
     )
 
     ([LaNocheEstrellada] of Cuadro
          (AutorObra  [VincentVanGogh])
     )
 
-    ([EdwardHopper] of Pintor
+    ([Renacentismo] of Epoca
     )
 
-    ([JarronConClaveles] of Cuadro
-         (AutorObra  [VincentVanGogh])
-    )
-
-    ([VistaDeToledo] of Cuadro
-         (superficie  2064)
-         (anyoDeCreacion  1598)
+    ([ElCaballeroDeLaMano] of Cuadro
+         (superficie  5412)
+         (anyoDeCreacion  1580)
+         (TematicaCuadro  [Retrato])
          (AutorObra  [ElGreco])
-         (TematicaCuadro  [Paisaje])
          (EpocaCuadro  [Manierismo])
-    )
-
-    ([VincentVanGogh] of Pintor
-    )
-
-    ([Rembrandt] of Pintor
     )
 
     ([LaMajaVestida] of Cuadro
          (AutorObra  [FranciscoDeGoya])
     )
 
-    ([AleksanderGyermski] of Pintor
-    )
-
-    ([ElAquelarre] of Cuadro
-         (AutorObra  [FranciscoDeGoya])
-    )
-
-    ([LaMuerteDeMarat] of Cuadro
-         (superficie  21120)
-         (anyoDeCreacion  1793)
-         (AutorObra  [JacquesLousDavid])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Neoclacisismo])
-    )
-
-    ([AntonioCanova] of Pintor
-    )
-
-    ([VenusDelEspejo] of Cuadro
-         (superficie  12896)
-         (AutorObra  [Tiziano])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Manierismo])
-    )
-
-    ([EugeneDelacroix] of Pintor
-    )
-
-    ([Realismo] of Epoca
-    )
-
-    ([FranciscoDeGoya] of Pintor
-    )
-
-    ([FransHals] of Pintor
-    )
-
-    ([LaCerradura] of Cuadro
-         (superficie  6532)
-         (anyoDeCreacion  1778)
-         (AutorObra  [JeanHonoreFragonard])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([GustaveCourbet] of Pintor
-    )
-
-    ([AugusteRodin] of Pintor
-    )
-
-    ([JoanDeBolonia] of Pintor
-    )
-
-    ([CestoConFrutas] of Cuadro
-         (superficie  2300)
-         (anyoDeCreacion  1596)
-         (AutorObra  [Caravaggio])
-         (TematicaCuadro  [NaturalezaMuerta])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([ElNacimientoDeVenus] of Cuadro
-         (superficie  47816)
-         (anyoDeCreacion  1485)
-         (AutorObra  [SandroBoticelli])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([Impresionismo] of Epoca
-    )
-
-    ([ClaudeMonet] of Pintor
-    )
-
-    ([HansHolbein] of Pintor
+    ([WilliamHogarth] of Pintor
     )
 
     ([Manierismo] of Epoca
     )
 
-    ([Autoretrato] of Cuadro
-         (anyoDeCreacion  1745)
-         (AutorObra  [WilliamHogarth])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Rococo])
-    )
-
-    ([WilliamAdolphe] of Pintor
-    )
-
-    ([ElCaballeroDeLaMano] of Cuadro
+    ([RetratoDeUnaMujerNoble] of Cuadro
          (superficie  5412)
          (anyoDeCreacion  1580)
-         (AutorObra  [ElGreco])
          (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Manierismo])
-    )
-
-    ([Gioconda] of Cuadro
-         (superficie  4081)
-         (anyoDeCreacion  1503)
-         (AutorObra  [LeonardoDaVinci])
-         (TematicaCuadro  [Retrato])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([LeonardoDaVinci] of Pintor
-    )
-
-    ([SandroBoticelli] of Pintor
-    )
-
-    ([ElJardinDelArtistaEnGiverny] of Cuadro
-         (AutorObra  [ClaudeMonet])
-    )
-
-    ([AFavorDeLaBrisa] of Cuadro
-         (AutorObra  [WinslowHomer])
-         (titulo  "A favor de la brisa")
-    )
-
-    ([Religion] of Tematica
-    )
-
-    ([UnBañoDeAsnieres] of Cuadro
-         (AutorObra  [GeogrgesPierre])
-    )
-
-    ([LaTrinidad] of Cuadro
-         (superficie  53700)
-         (anyoDeCreacion  1578)
-         (AutorObra  [ElGreco])
-         (TematicaCuadro  [Religion])
-         (EpocaCuadro  [Manierismo])
-    )
-
-    ([FranciscoGuitierrez] of Pintor
-    )
-
-    ([JuegosDeNiños] of Cuadro
-         (superficie  18998)
-         (anyoDeCreacion  1560)
-         (AutorObra  [PieterBrueghel])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Renacentismo])
-    )
-
-    ([AutoretratoDeVincent] of Cuadro
-         (AutorObra  [VincentVanGogh])
-    )
-
-    ([Romanticismo] of Epoca
-    )
-
-    ([Rococo] of Epoca
-    )
-
-    ([GeogrgesPierre] of Pintor
-    )
-
-    ([Historica] of Tematica
-    )
-
-    ([Lirios] of Cuadro
-         (AutorObra  [VincentVanGogh])
-    )
-
-    ([LosDiscipulosDeEmaus] of Cuadro
-         (superficie  27580)
-         (anyoDeCreacion  1602)
-         (AutorObra  [Caravaggio])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Barroco])
-    )
-
-    ([BernardinoCampiPintandoASofiaAnguissola] of Cuadro
-         (superficie  7000)
-         (anyoDeCreacion  1559)
-         (AutorObra  [SofiaAnguissola])
-         (TematicaCuadro  [Retrato])
+         (AutorObra  [LaviniaFontana])
          (EpocaCuadro  [Manierismo])
     )
 
     ([SofiaAnguissola] of Pintor
     )
 
-    ([LasMeninas] of Cuadro
-         (superficie  9000)
-         (anyoDeCreacion  1656)
-         (AutorObra  [DiegoVelazquez])
-         (TematicaCuadro  [Historica])
-         (EpocaCuadro  [Barroco])
+    ([Lycianna] of Cuadro
+         (superficie  5000)
+         (anyoDeCreacion  1918)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [JohnWilliam])
+         (EpocaCuadro  [Neoclacisismo])
+    )
+
+    ([Canaletto] of Pintor
+    )
+
+    ([Parmigianino] of Pintor
     )
 
     ([Barroco] of Epoca
     )
 
+    ([LaPastora] of Cuadro
+         (AutorObra  [WilliamAdolphe])
+    )
+
+    ([JeanHonoreFragonard] of Pintor
+    )
+
+    ([PieterBrueghel] of Pintor
+    )
+
+    ([LosSirgadoresDeVolga] of Cuadro
+         (AutorObra  [IliaRepin])
+    )
+
+    ([LosDiscipulosDeEmaus] of Cuadro
+         (superficie  27580)
+         (anyoDeCreacion  1602)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [Caravaggio])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([Religion] of Tematica
+    )
+
+    ([LeonardoDaVinci] of Pintor
+    )
+
+    ([Realismo] of Epoca
+    )
+
+    ([PlazaDeSanMarcos] of Cuadro
+         (superficie  25000)
+         (anyoDeCreacion  1723)
+         (TematicaCuadro  [Paisaje])
+         (AutorObra  [Canaletto])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([JoanDeBolonia] of Pintor
+    )
+
+    ([GustaveCourbet] of Pintor
+    )
+
+    ([JuegosDeNiños] of Cuadro
+         (superficie  18998)
+         (anyoDeCreacion  1560)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [PieterBrueghel])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([LaFamiliaDeCarlosIV] of Cuadro
+         (AutorObra  [FranciscoDeGoya])
+    )
+
+    ([HabitacionesJuntoAlMar] of Cuadro
+         (superficie  7446)
+         (anyoDeCreacion  1951)
+         (TematicaCuadro  [Paisaje])
+         (AutorObra  [EdwardHopper])
+         (EpocaCuadro  [Neoclacisismo])
+    )
+
+    ([ElColumpio] of Cuadro
+         (superficie  5265)
+         (anyoDeCreacion  1767)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [JeanHonoreFragonard])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([LasMeninas] of Cuadro
+         (superficie  9000)
+         (anyoDeCreacion  1656)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [DiegoVelazquez])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([JacquesLousDavid] of Pintor
+    )
+
+    ([AmtpmopCprradomo] of Pintor
+    )
+
+    ([AutoretratoDeVincent] of Cuadro
+         (AutorObra  [VincentVanGogh])
+    )
+
+    ([RetratoDeJaneSeymour] of Cuadro
+         (superficie  7500)
+         (anyoDeCreacion  1536)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [HansHolbein])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([ElJardinDelArtistaEnGiverny] of Cuadro
+         (AutorObra  [ClaudeMonet])
+    )
+
+    ([ElAmorVictorioso] of Cuadro
+         (superficie  17628)
+         (anyoDeCreacion  1601)
+         (TematicaCuadro  [NaturalezaMuerta])
+         (AutorObra  [Caravaggio])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([Tiziano] of Pintor
+    )
+
+    ([LaviniaFontana] of Pintor
+    )
+
+    ([UnBañoDeAsnieres] of Cuadro
+         (AutorObra  [GeogrgesPierre])
+    )
+
+    ([VincentVanGogh] of Pintor
+    )
+
+    ([ElGreco] of Pintor
+    )
+
+    ([WinslowHomer] of Pintor
+         (nombreAutor  "Winslow Homer")
+    )
+
+    ([NaturalezaMuerta] of Tematica
+    )
+
+    ([BernardinoCampiPintandoASofiaAnguissola] of Cuadro
+         (superficie  7000)
+         (anyoDeCreacion  1559)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [SofiaAnguissola])
+         (EpocaCuadro  [Manierismo])
+    )
+
+    ([FranciscoDeGoya] of Pintor
+    )
+
+    ([Almiar] of Cuadro
+         (AutorObra  [ClaudeMonet])
+    )
+
+    ([GeogrgesPierre] of Pintor
+    )
+
+    ([Paisaje] of Tematica
+    )
+
+    ([FransHals] of Pintor
+    )
+
+    ([LaUltimaCena] of Cuadro
+         (superficie  40480000)
+         (anyoDeCreacion  1496)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [LeonardoDaVinci])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([MigueAngel] of Pintor
+    )
+
+    ([VenusDelEspejo] of Cuadro
+         (superficie  12896)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [Tiziano])
+         (EpocaCuadro  [Manierismo])
+    )
+
+    ([AntonioCanova] of Pintor
+    )
+
+    ([LosComedoresDePatatas] of Cuadro
+         (AutorObra  [VincentVanGogh])
+    )
+
+    ([AFavorDeLaBrisa] of Cuadro
+         (titulo  "A favor de la brisa")
+         (AutorObra  [WinslowHomer])
+    )
+
+    ([ElJovenAzul] of Cuadro
+         (superficie  19360)
+         (anyoDeCreacion  1770)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [ThomasGainsborough])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([RailroadSunset] of Cuadro
+         (superficie  6500)
+         (anyoDeCreacion  1929)
+         (TematicaCuadro  [Paisaje])
+         (AutorObra  [EdwardHopper])
+         (EpocaCuadro  [Neoclacisismo])
+    )
+
+    ([LaRondaDeNoche] of Cuadro
+         (superficie  158631)
+         (anyoDeCreacion  1641)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [Rembrandt])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([JarronConClaveles] of Cuadro
+         (AutorObra  [VincentVanGogh])
+    )
+
+    ([LaMajaDesnuda] of Cuadro
+         (AutorObra  [FranciscoDeGoya])
+    )
+
+    ([Rembrandt] of Pintor
+    )
+
+    ([Caravaggio] of Pintor
+    )
+
+    ([ElAquelarre] of Cuadro
+         (AutorObra  [FranciscoDeGoya])
+    )
+
+    ([ElNiñoDeLaPeonza] of Cuadro
+         (superficie  5092)
+         (anyoDeCreacion  1735)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [JeanSimeon])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([Autoretrato] of Cuadro
+         (anyoDeCreacion  1745)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [WilliamHogarth])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([WilliamAdolphe] of Pintor
+    )
+
+    ([JeanSimeon] of Pintor
+    )
+
+    ([MujerJudiaVendiendoNaranjas] of Cuadro
+         (AutorObra  [AleksanderGyermski])
+    )
+
+    ([CaballeroSonriente] of Cuadro
+         (superficie  5561)
+         (anyoDeCreacion  1624)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [FransHals])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([Retrato] of Tematica
+    )
+
+    ([Rococo] of Epoca
+    )
+
+    ([LaMatanzaDeQuios] of Cuadro
+         (AutorObra  [EugeneDelacroix])
+    )
+
+    ([ElNacimientoDeVenus] of Cuadro
+         (superficie  47816)
+         (anyoDeCreacion  1485)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [SandroBoticelli])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([ClaudeMonet] of Pintor
+    )
+
+    ([PuenteDeNarni] of Cuadro
+         (AutorObra  [CamileCorot])
+    )
+
+    ([VistaDeToledo] of Cuadro
+         (superficie  2064)
+         (anyoDeCreacion  1598)
+         (TematicaCuadro  [Paisaje])
+         (AutorObra  [ElGreco])
+         (EpocaCuadro  [Manierismo])
+    )
+
+    ([Lirios] of Cuadro
+         (AutorObra  [VincentVanGogh])
+    )
+
+    ([SandroBoticelli] of Pintor
+    )
+
+    ([VenusDelEspejoVelazquez] of Cuadro
+         (superficie  21594)
+         (anyoDeCreacion  1647)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [DiegoVelazquez])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([Neoclacisismo] of Epoca
+    )
+
+    ([CestoConFrutas] of Cuadro
+         (superficie  2300)
+         (anyoDeCreacion  1596)
+         (TematicaCuadro  [NaturalezaMuerta])
+         (AutorObra  [Caravaggio])
+         (EpocaCuadro  [Barroco])
+    )
+
+    ([ElDesesperado] of Cuadro
+         (AutorObra  [GustaveCourbet])
+    )
+
+    ([ThomasGainsborough] of Pintor
+    )
+
+    ([LaMuerteDeMarat] of Cuadro
+         (superficie  21120)
+         (anyoDeCreacion  1793)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [JacquesLousDavid])
+         (EpocaCuadro  [Neoclacisismo])
+    )
+
+    ([CamileCorot] of Pintor
+    )
+
+    ([Historica] of Tematica
+    )
+
+    ([AmorSacroYAmorProfano] of Cuadro
+         (superficie  32922)
+         (anyoDeCreacion  1515)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [Tiziano])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([EugeneDelacroix] of Pintor
+    )
+
+    ([EdwardHopper] of Pintor
+    )
+
+    ([FranciscoGuitierrez] of Pintor
+    )
+
+    ([HombreDeVitruvio] of Cuadro
+         (superficie  910)
+         (anyoDeCreacion  1492)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [LeonardoDaVinci])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([IliaRepin] of Pintor
+    )
+
+    ([Impresionismo] of Epoca
+    )
+
+    ([LaCerradura] of Cuadro
+         (superficie  6532)
+         (anyoDeCreacion  1778)
+         (TematicaCuadro  [Historica])
+         (AutorObra  [JeanHonoreFragonard])
+         (EpocaCuadro  [Rococo])
+    )
+
+    ([Gioconda] of Cuadro
+         (superficie  4081)
+         (anyoDeCreacion  1503)
+         (TematicaCuadro  [Retrato])
+         (AutorObra  [LeonardoDaVinci])
+         (EpocaCuadro  [Renacentismo])
+    )
+
+    ([AleksanderGyermski] of Pintor
+    )
+
+    ([VIsionOfSantJerome] of Cuadro
+         (superficie  6000)
+         (anyoDeCreacion  1526)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [Parmigianino])
+         (EpocaCuadro  [Manierismo])
+    )
+
+    ([HansHolbein] of Pintor
+    )
+
+    ([AugusteRodin] of Pintor
+    )
+
+    ([LaTrinidad] of Cuadro
+         (superficie  53700)
+         (anyoDeCreacion  1578)
+         (TematicaCuadro  [Religion])
+         (AutorObra  [ElGreco])
+         (EpocaCuadro  [Manierismo])
+    )
+
+    ([DiegoVelazquez] of Pintor
+    )
+
+    ([LaLibertadGuiandoAlPueblo] of Cuadro
+         (AutorObra  [EugeneDelacroix])
+    )
+
 )
+
 
 ; Modulo principal
 
@@ -893,9 +882,6 @@
 			else FALSE)
 )
 
-(defglobal ?*preHistoriaKnowledge* = 0)
-(defglobal ?*edadAntiguaKnowledge* = 0)
-(defglobal ?*edadMediaKnowledge* = 0)
 (defglobal ?*edadModernaKnowledge* = 0)
 (defglobal ?*edadContemporaneaKnowledge* = 0)
 
@@ -910,34 +896,19 @@
 
                 (loop-for-count (?i 1 (length$ $?questions)) do
                         (bind ?answer (numberWithRangesQuestion (nth$ ?i ?questions) 1 5))
-                        ;(format t "%s" (nth$ ?i ?questions))
-                        ;(printout t crlf)
-                        ;(bind ?answer (read))
                         (bind $?answers(insert$ $?answers (+ (length$ $?answers) 1) ?answer))
                         (printout t crlf)
                 )
 
-                (loop-for-count (?i 1 3) do
-                        (bind ?*preHistoriaKnowledge* (+ ?*preHistoriaKnowledge* (nth$ ?i ?answers)))
-                )
-
-                (loop-for-count (?i 4 10) do
-                        (bind ?*edadAntiguaKnowledge* (+ ?*edadAntiguaKnowledge* (nth$ ?i ?answers)))
-                )
-
-                (loop-for-count (?i 11 19) do
-                        (bind ?*edadMediaKnowledge* (+ ?*edadMediaKnowledge* (nth$ ?i ?answers)))
-                )
-
-                (loop-for-count (?i 20 23) do
+                (loop-for-count (?i 1 4) do
                         (bind ?*edadModernaKnowledge* (+ ?*edadModernaKnowledge* (nth$ ?i ?answers)))
                 )
 
-                (loop-for-count (?i 24 28) do
+                (loop-for-count (?i 5 9) do
                         (bind ?*edadContemporaneaKnowledge* (+ ?*edadContemporaneaKnowledge* (nth$ ?i ?answers)))
                 )                  
                
-                (bind ?list (create$ ?*preHistoriaKnowledge* ?*edadAntiguaKnowledge* ?*edadMediaKnowledge* ?*edadModernaKnowledge* ?*edadContemporaneaKnowledge*))
+                (bind ?list (create$ ?*edadModernaKnowledge* ?*edadContemporaneaKnowledge*))
                 ?list
 
 )
@@ -945,29 +916,29 @@
 ;Función que crea todas las preguntas necesarias para evaluar el nivel de arte del visitante
 (deffunction createArtQuestions (?random)
         ;prehistoria
-        (bind ?p1 "Valora del 1 al 5 tus conocimientos sobre Arte paleolitico (h. 40.000 - 10.000 a.C.)")
-        (bind ?p2 "Valora del 1 al 5 tus conocimientos sobre Arte mesolitico (h. 10.000 - 4000 a.C.)")
-        (bind ?p3 "Valora del 1 al 5 tus conocimientos sobre Arte neolitico (h. 4000 - 2000 a.C.)")
+       ; (bind ?p1 "Valora del 1 al 5 tus conocimientos sobre Arte paleolitico (h. 40.000 - 10.000 a.C.)")
+       ; (bind ?p2 "Valora del 1 al 5 tus conocimientos sobre Arte mesolitico (h. 10.000 - 4000 a.C.)")
+        ;(bind ?p3 "Valora del 1 al 5 tus conocimientos sobre Arte neolitico (h. 4000 - 2000 a.C.)")
 
         ;Edad antigua
-        (bind ?p4 "Valora del 1 al 5 tus conocimientos sobre Arte egipcio (h. 5300 - 30 a.C.)")
-        (bind ?p5 "Valora del 1 al 5 tus conocimientos sobre Arte mesopotamico (h. 4000 - 539 a.C.)")
-        (bind ?p6 "Valora del 1 al 5 tus conocimientos sobre Arte minoico (h. 3000 - 1400 a.C.)")
-        (bind ?p7 "Valora del 1 al 5 tus conocimientos sobre Arte micenico (h. 1500 - 1100 a.C.)")
-        (bind ?p8 "Valora del 1 al 5 tus conocimientos sobre Arte griego (h. 1000 - 320 a.C.)")
-        (bind ?p9 "Valora del 1 al 5 tus conocimientos sobre Arte etrusco (h. 800 - 100 a.C.)")
-        (bind ?p10 "Valora del 1 al 5 tus conocimientos sobre Arte romano (h. 400 a.C - 476 d.C.)")
+        ;(bind ?p4 "Valora del 1 al 5 tus conocimientos sobre Arte egipcio (h. 5300 - 30 a.C.)")
+        ;(bind ?p5 "Valora del 1 al 5 tus conocimientos sobre Arte mesopotamico (h. 4000 - 539 a.C.)")
+       ; (bind ?p6 "Valora del 1 al 5 tus conocimientos sobre Arte minoico (h. 3000 - 1400 a.C.)")
+        ;(bind ?p7 "Valora del 1 al 5 tus conocimientos sobre Arte micenico (h. 1500 - 1100 a.C.)")
+        ;(bind ?p8 "Valora del 1 al 5 tus conocimientos sobre Arte griego (h. 1000 - 320 a.C.)")
+        ;(bind ?p9 "Valora del 1 al 5 tus conocimientos sobre Arte etrusco (h. 800 - 100 a.C.)")
+        ;(bind ?p10 "Valora del 1 al 5 tus conocimientos sobre Arte romano (h. 400 a.C - 476 d.C.)")
 
         ;Edad media
-        (bind ?p11 "Valora del 1 al 5 tus conocimientos sobre Arte paleocristiano (h. s.I - IV)")
-        (bind ?p12 "Valora del 1 al 5 tus conocimientos sobre Arte visigodo (h. 415 - 711)")
-        (bind ?p13 "Valora del 1 al 5 tus conocimientos sobre Arte bizantino (h. 330 – 1.453)")
-        (bind ?p14 "Valora del 1 al 5 tus conocimientos sobre Arte mozarabe (h. 711 - 1.000)")
-        (bind ?p15 "Valora del 1 al 5 tus conocimientos sobre Arte carolingio (h. 780 - 900)")
-        (bind ?p16 "Valora del 1 al 5 tus conocimientos sobre Arte otoniano (h. 950 - 1050)")
-        (bind ?p17 "Valora del 1 al 5 tus conocimientos sobre Arte romanico (s. XI - XIII)")
-        (bind ?p18 "Valora del 1 al 5 tus conocimientos sobre Arte gotico (s. XII - XVI)")
-        (bind ?p19 "Valora del 1 al 5 tus conocimientos sobre Arte mudejar (s.XII - XVI)")
+        ;(bind ?p11 "Valora del 1 al 5 tus conocimientos sobre Arte paleocristiano (h. s.I - IV)")
+        ;(bind ?p12 "Valora del 1 al 5 tus conocimientos sobre Arte visigodo (h. 415 - 711)")
+        ;(bind ?p13 "Valora del 1 al 5 tus conocimientos sobre Arte bizantino (h. 330 – 1.453)")
+        ;(bind ?p14 "Valora del 1 al 5 tus conocimientos sobre Arte mozarabe (h. 711 - 1.000)")
+        ;(bind ?p15 "Valora del 1 al 5 tus conocimientos sobre Arte carolingio (h. 780 - 900)")
+        ;(bind ?p16 "Valora del 1 al 5 tus conocimientos sobre Arte otoniano (h. 950 - 1050)")
+        ;(bind ?p17 "Valora del 1 al 5 tus conocimientos sobre Arte romanico (s. XI - XIII)")
+        ;(bind ?p18 "Valora del 1 al 5 tus conocimientos sobre Arte gotico (s. XII - XVI)")
+        ;(bind ?p19 "Valora del 1 al 5 tus conocimientos sobre Arte mudejar (s.XII - XVI)")
 
         ;Edad Moderna
         (bind ?p20 "Valora del 1 al 5 tus conocimientos sobre Renacimiento (s.XV - XVI)")
@@ -982,7 +953,7 @@
         (bind ?p27 "Valora del 1 al 5 tus conocimientos sobre Impresionismo (mediados s.XIX)")
         (bind ?p28 "Valora del 1 al 5 tus conocimientos sobre Simbolismo (finales del s.XIX)")
 
-        (bind ?list (create$ ?p1 ?p2 ?p3 ?p4 ?p5 ?p6 ?p7 ?p8 ?p9 ?p10 ?p11 ?p12 ?p13 ?p14 ?p15 ?p16 ?p17 ?p18 ?p19 ?p20 ?p21 ?p22 ?p23 ?p24 ?p25 ?p26 ?p27 ?p28))
+        (bind ?list (create$ ?p20 ?p21 ?p22 ?p23 ?p24 ?p25 ?p26 ?p27 ?p28))
         ?list
 
 )
@@ -1022,9 +993,12 @@
 
 
 (defrule getVisitorsPreferences::getVisitorsData "Regla para obtener las preferencias de un visitante"
+                (declare (salience 2))
                 =>
                 >(make-instance visitante of Visitante)
                 (bind ?size (numberQuestion "Cual es el tamanyo de tu grupo?"))
+                >(send [visitante] put-tamanyoGrupo ?size)
+
                 (bind ?isFamily (booleanQuestion "Visitas el museo con tu familia?"))
                 (bind ?nacionalidad (stringQuestion "Cual es vuestra nacionalidad?"))
                 (bind ?daysPerVist (numberQuestion "Cuantos dias vas a dedicar a la visita del museo?"))
